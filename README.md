@@ -26,8 +26,9 @@ The app itself is written in PHP, and has been tested on Ubuntu 14.04, with Apac
 2. On the *database server*, do the following:
     2.1. `apt-get install mysql-server` # To install MySQL.  Be sure to configure a root password.
     2.2. `mysql -uroot -pPassword -e "create database devopsdb"` # Use the password set previously.
-    2.3. Upload the **devops-demo-1.0.sql** file to the VM.
-    2.4. `mysql -uroot -pPassword devopsdb < devops-demo-1.0.sql`
+    2.3. `sudo mysql` then `USE devopsdb` then `CREATE USER 'devops_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';`
+    2.4. Upload the **devops-demo-1.0.sql** file to the VM.
+    2.5. `sudo mysql -uroot -pPassword devopsdb < devops-demo-1.0.sql`
 3. On the *webserver*, do the following:
     3.1. `apt-get install apache2 php5 php5-mysql` # To install Apache, PHP5 and the Apache MySQL plugin.
     3.2. `rm /var/www/html/*` # To clear the apache web folder, we don't want the index.html there.
